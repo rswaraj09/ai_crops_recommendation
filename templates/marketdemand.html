@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Demand for {{ crop_name }}</title>
+</head>
+<body>
+    <h1>Market Demand for {{ crop_name }}</h1>
+    <h2>Live Market Analysis</h2>
+    <p>{{ live_analysis }}</p>
+    <h2>Market Data</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Region</th>
+                <th>Demand</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in market_data %}
+            <tr>
+                <td>{{ data.region }}</td>
+                <td>{{ data.demand }}</td>
+                <td>{{ data.price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

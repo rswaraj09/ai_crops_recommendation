@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Demand Analysis</title>
+    <style>
+        body {
+            background-image: url('/static/images/background.jpg');
+            background-size: cover;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+        }
+        td {
+            background-color: #f2f2f2;
+            color: black;
+        }
+        .crop-images {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .crop-images img {
+            margin: 0 10px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .graphs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .graph-container {
+            width: 45%;
+            margin-bottom: 20px;
+        }
+        h1, h2, h3 {
+            color: black;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>MARKET ANALYSIS FOR RICE AND RAGI</h1>
+    <h2>Live Market Analysis</h2>
+
+    <div class="crop-images">
+        <img src="/static/images/crop1.jpg" alt="Crop 1">
+        <img src="/static/images/crop2.jpg" alt="Crop 2">
+        <img src="/static/images/crop3.jpg" alt="Crop 3">
+        <img src="/static/images/crop4.jpg" alt="Crop 4">
+        <img src="/static/images/crop5.jpg" alt="Crop 5">
+    </div>
+    <table border="1">
+        <tr>
+            <th>Region 🌍</th>
+            <th>Demand 📈</th>
+            <th>Price 💰</th>
+        </tr>
+        <!-- {% for row in market_data %}
+        <tr>
+            <td>{{ row.region }}</td>
+            <td>{{ row.demand }}</td>
+            <td>{{ row.price }}</td>
+        </tr>
+        {% endfor %} -->
+        <!-- <tr>
+            <td>Beans</td>
+            <td>All Year</td>
+            <td>Rs. 30</td>
+        </tr>
+        <tr>
+            <td>Beets</td>
+            <td>All Year</td>
+            <td>Rs. 40</td>
+        </tr>
+        <tr>
+            <td>Chard</td>
+            <td>March-May</td>
+            <td>Rs. 750</td>
+        </tr> -->
+        <tr>
+            <td>Rice</td>
+            <td>All Year</td>
+            <td>Rs. 50</td>
+        </tr>
+        <tr>
+            <td>Ragi</td>
+            <td>March-Oct</td>
+            <td>Rs. 35</td>
+        </tr>
+    </table>
+    <h2>Rice Price Analysis</h2>
+    <div class="graphs">
+        <div class="graph-container">
+            <h3>Rice Price for Past 5 Years</h3>
+            <canvas id="ricePricePast"></canvas>
+        </div>
+        <div class="graph-container">
+            <h3>Predicted Rice Price for Next Year</h3>
+            <canvas id="ricePriceFuture"></canvas>
+        </div>
+    </div>
+    <h2>Ragi Price Analysis</h2>
+    <div class="graphs">
+        <div class="graph-container">
+            <h3>Ragi Price for Past 5 Years</h3>
+            <canvas id="ragiPricePast"></canvas>
+        </div>
+        <div class="graph-container">
+            <h3>Predicted Ragi Price for Next Year</h3>
+            <canvas id="ragiPriceFuture"></canvas>
+        </div>
+    </div>
+    <script>
+        var ctxPast = document.getElementById('ricePricePast').getContext('2d');
+        var ricePricePast = new Chart(ctxPast, {
+            type: 'line',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022'],
+                datasets: [{
+                    label: 'Price (Rs.)',
+                    data: [45, 48, 50, 52, 50],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var ctxFuture = document.getElementById('ricePriceFuture').getContext('2d');
+        var ricePriceFuture = new Chart(ctxFuture, {
+            type: 'line',
+            data: {
+                labels: ['2023', '2024'],
+                datasets: [{
+                    label: 'Predicted Price (Rs.)',
+                    data: [50, 53],
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var ctxRagiPast = document.getElementById('ragiPricePast').getContext('2d');
+        var ragiPricePast = new Chart(ctxRagiPast, {
+            type: 'line',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022'],
+                datasets: [{
+                    label: 'Price (Rs.)',
+                    data: [30, 32, 34, 36, 35],
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var ctxRagiFuture = document.getElementById('ragiPriceFuture').getContext('2d');
+        var ragiPriceFuture = new Chart(ctxRagiFuture, {
+            type: 'line',
+            data: {
+                labels: ['2023', '2024'],
+                datasets: [{
+                    label: 'Predicted Price (Rs.)',
+                    data: [35, 37],
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

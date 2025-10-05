@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>AI Crop Recommendation System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://ai-public.creatie.ai/gen_page/tailwind-custom.css" rel="stylesheet">    <script src="https://cdn.tailwindcss.com/3.4.5?plugins=forms@0.5.7,typography@0.5.13,aspect-ratio@0.4.2,container-queries@0.1.1"></script>
+    <script src="https://ai-public.creatie.ai/gen_page/tailwind-config.min.js" data-color="#000000" data-border-radius="small"></script>
+</head>
+<body class="font-sans">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">                    <img class="h-8 w-auto" src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="Logo">
+                </div>                <div class="flex space-x-8">
+                    <a href="#" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-700 hover:text-custom">About</a>
+                    <a href="#key-features" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-700 hover:text-custom">Features</a>
+                    <a href="#" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-700 hover:text-custom">Contact</a>
+                    <a href="login.html" class="!rounded-button inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-custom hover:bg-custom/90">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <section class="relative bg-gray-900">            <div class="absolute inset-0">
+                <img src="https://tse4.mm.bing.net/th/id/OIP.PXCk8g62hMUBEEeWQPCbaAHaGr?rs=1&pid=ImgDetMain&o=7&rm=3"class="w-full h-full object-cover" alt="Hero">                <div class="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-gray-900/40"></div>
+            </div>
+            <div class="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-32">                <div class="max-w-2xl">
+                    <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">AI AgriGenius</h1>
+                    <p class="mt-6 text-xl text-gray-300">Get personalized crop recommendations based on your soil, weather conditions and market behaviour. Maximize your yield with data-driven insights.</p>                    <div class="mt-10">
+                        <button id="getStartedButton" class="!rounded-button inline-flex items-center px-6 py-3 text-base font-medium text-white bg-custom hover:bg-custom/90">                            Get Started
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </button>                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="key-features" class="py-24 bg-gray-50">            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900">Key Features</h2>
+                    <p class="mt-4 text-lg text-gray-600">Everything you need to make informed farming decisions</p>                </div>
+                <div class="mt-20 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="relative p-8 bg-white rounded-lg shadow-sm">                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-custom p-5 text-white">                            <i class="fas fa-microscope text-2xl"></i>
+                        </div>
+                        <h3 class="mt-8 text-xl font-medium text-gray-900">Soil Analysis</h3>
+                        <p class="mt-4 text-base text-gray-500">Advanced soil testing and analysis to determine optimal crop selection based on your land's composition.</p>                    </div>
+                    <div class="relative p-8 bg-white rounded-lg shadow-sm">
+                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-custom p-5 text-white">                            <i class="fas fa-cloud-sun text-2xl"></i>
+                        </div>
+                        <h3 class="mt-8 text-xl font-medium text-gray-900">Weather Integration</h3>
+                        <p class="mt-4 text-base text-gray-500">Real-time weather data and forecasting to help you plan your farming activities effectively.</p>                    </div>
+                    <div class="relative p-8 bg-white rounded-lg shadow-sm">
+                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-custom p-5 text-white">                            <i class="fas fa-chart-line text-2xl"></i>
+                        </div>
+                        <h3 class="mt-8 text-xl font-medium text-gray-900">Market Insights</h3>
+                        <p class="mt-4 text-base text-gray-500">Up-to-date market trends and demand forecasts to maximize your profit potential.</p>                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24">
+            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">                <div class="lg:grid lg:grid-cols-2 lg:gap-24 lg:items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold tracking-tight text-gray-900">How It Works</h2>
+                        <p class="mt-4 text-lg text-gray-600">Our AI-powered system makes crop recommendations simple and effective</p>                        <div class="mt-12 space-y-10">
+                            <div class="flex">
+                                <div class="flex-shrink-0">                                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-custom text-white">
+                                        <i class="fas fa-1"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">                                    <h3 class="text-lg font-medium text-gray-900">Input Farm Data</h3>
+                                    <p class="mt-2 text-base text-gray-500">Enter your farm's location, soil characteristics, and available resources.</p>
+                                </div>
+                            </div>                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-custom text-white">                                        <i class="fas fa-2"></i>
+                                    </div>
+                                </div>                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900">AI Analysis</h3>
+                                    <p class="mt-2 text-base text-gray-500">Our AI processes your data along with weather forecasts and market trends.</p>                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0">                                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-custom text-white">
+                                        <i class="fas fa-3"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">                                    <h3 class="text-lg font-medium text-gray-900">Get Recommendations</h3>
+                                    <p class="mt-2 text-base text-gray-500">Receive personalized crop recommendations and farming strategies.</p>
+                                </div>
+                            </div>                        </div>
+                    </div>
+                    <div class="mt-10 lg:mt-0">
+                        <img src="https://media-hosting.imagekit.io//7774a1457c6c484a/image%201.jpg?Expires=1836059523&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=PWhNX~GQ~vuwzFdguQyqm-XoahIvbBK~p8SSYN4hHKcjkUxR~pghOtIcEqQJTH6gctn-qznli-PFaYDO8N6Ax2rcTHcSHRHMlzJ6cWfHxqYv93UpNQ77iMy16QtCUw7PuZfKSkVjDjpLzxNCFgSZN-SNc7keDSZ-F29~Vf~RKzK4511J-z6~xRdQ-EiPMED2CkSvn8oCFx3CDgFXNha2bHCAJpQOHvzz6SjzEY~6Qmf-jEvQI647CRvBmg0gVHDrEebTG5d1zSsxngzMPUIpYWHD2J4okWaPSI2g63W~O9NRcdY6t7c9n24-MvOKcssGK68emqqIQthhrQP3Ovdm0A__" class="rounded-lg shadow-lg" alt="How it works">                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-gray-50">            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-24">
+                    <div>                        <h2 class="text-3xl font-bold tracking-tight text-gray-900">Proven Results</h2>
+                        <p class="mt-4 text-lg text-gray-600">Our platform has helped thousands of farmers improve their yields</p>
+                        <div class="mt-12 grid grid-cols-2 gap-8">                            <div>
+                                <p class="text-4xl font-bold text-custom">30%</p>
+                                <p class="mt-2 text-base text-gray-600">Average Yield Increase</p>
+                            </div>
+                            <div>
+                                <p class="text-4xl font-bold text-custom">25k+</p>
+                                <p class="mt-2 text-base text-gray-600">Active Farmers</p>
+                            </div>                            <div>
+                                <p class="text-4xl font-bold text-custom">95%</p>
+                                <p class="mt-2 text-base text-gray-600">Accuracy Rate</p>
+                            </div>
+                            <div>
+                                <p class="text-4xl font-bold text-custom">50+</p>
+                                <p class="mt-2 text-base text-gray-600">Supported Crops</p>
+                            </div>                        </div>
+                    </div>
+                    <div class="mt-10 lg:mt-0">
+                        <ul class="space-y-4">                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-check-circle text-custom text-xl"></i>
+                                </div>
+                                <p class="ml-3 text-base text-gray-600">Scientifically backed recommendations based on local conditions</p>                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">                                    <i class="fas fa-check-circle text-custom text-xl"></i>
+                                </div>                                <p class="ml-3 text-base text-gray-600">Real-time monitoring and alerts for weather changes</p>
+                            </li>                            <li class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-check-circle text-custom text-xl"></i>
+                                </div>
+                                <p class="ml-3 text-base text-gray-600">Comprehensive market analysis and price predictions</p>                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0">                                    <i class="fas fa-check-circle text-custom text-xl"></i>
+                                </div>                                <p class="ml-3 text-base text-gray-600">24/7 expert support and community knowledge sharing</p>
+                            </li>                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>    <footer class="bg-white border-t border-gray-100">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">                <div class="col-span-2">
+                    <img class="h-8 w-auto" src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="Logo">                    <p class="mt-4 text-base text-gray-500">Empowering farmers with AI-driven insights for better crop decisions.</p>                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-900 tracking-wider uppercase">Quick Links</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-500 hover:text-gray-900">About Us</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-gray-900">Features</a></li>
+                        <li><a href="#" class="text-base text-gray-500 hover:text-gray-900">Contact</a></li>
+                    </ul>
+                </div>                <div>
+                    <h3 class="text-sm font-semibold text-gray-900 tracking-wider uppercase">Follow Us</h3>                    <div class="mt-4 flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-gray-500">                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-500">                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-500">                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>            </div>
+            <div class="mt-12 border-t border-gray-100 pt-8">
+                <p class="text-base text-gray-400">&copy; 2024 AI Crop Recommendation System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('getStartedButton').addEventListener('click', function() {
+            window.location.href = 'welcome.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Crop Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images.pexels.com/photos/2284170/pexels-photo-2284170.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: #fff;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+        h1 {
+            color: #ffcc00;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1rem;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        input {
+            background: rgba(255, 255, 255, 0.8);
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #prediction_result, #soil_info {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>AI Crop Recommendation System</h1>
+        <label for="district">Enter Your District:</label>
+        <input type="text" id="district" placeholder="Type district name..." required>
+        <button onclick="fetchSoilData()">Get Soil Details</button>
+
+        <p id="soil_info"></p>
+
+        <button onclick="predictCrop()">Predict Crop</button>
+        <p id="prediction_result"></p>
+        <button id="market_analysis_btn" style="display: none;" onclick="getMarketAnalysis()">Get Market Analysis</button>
+        <p id="market_analysis_result"></p>
+    </div>
+
+    <script>
+        let soilData = {}; // Store soil data for prediction
+
+        function fetchSoilData() {
+            let district = document.getElementById("district").value.trim();
+
+            if (!district) {
+                alert("Please enter a district name.");
+                return;
+            }
+
+            fetch(`/get_soil_data?district=${district}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        document.getElementById("soil_info").innerText = "Error: " + data.error;
+                    } else {
+                        // Store soil data for prediction
+                        soilData = data;
+
+                        document.getElementById("soil_info").innerHTML = `
+                            <b>Soil Details:</b><br>
+                            Nitrogen (N): ${data.N} <br>
+                            Phosphorus (P): ${data.P} <br>
+                            Potassium (K): ${data.K} <br>
+                            pH Level: ${data.ph} <br>
+                            EC Level: ${data.EC}
+                        `;
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+        }
+
+        function predictCrop() {
+            if (!soilData.N) {
+                alert("Please fetch soil details first.");
+                return;
+            }
+
+            fetch(`/predict_crop?N=${soilData.N}&P=${soilData.P}&K=${soilData.K}&ph=${soilData.ph}&EC=${soilData.EC}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        document.getElementById("prediction_result").innerText = "Error: " + data.error;
+                    } else {
+                        document.getElementById("prediction_result").innerText = "Recommended Crop: " + data.predicted_crop;
+                        document.getElementById("market_analysis_btn").style.display = "block"; // Show the button
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+        }
+
+        function getMarketAnalysis() {
+            const crop = document.getElementById("prediction_result").innerText.split(": ")[1];
+            if (!crop) {
+                alert("Please predict a crop first.");
+                return;
+            }
+
+            // Placeholder for market analysis logic
+            document.getElementById("market_analysis_result").innerText = `Market analysis for ${crop} is currently unavailable.`;
+        }
+    </script>
+
+</body>
+</html>
+

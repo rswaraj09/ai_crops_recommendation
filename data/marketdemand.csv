@@ -1,0 +1,19 @@
+Crop Name,Current Price (per kg),Demand Index (0-100),Last 3-Year Avg. Price,Best Selling Season
+Bajra,20,75,18,Jan-April
+Maize,22,80,20,March-May
+Groundnut,50,85,48,Feb-April
+Soybean,45,88,42,March-May
+Wheat,25,85,22,Year-round
+Gram,40,78,35,Year-round
+Jowar,30,70,28,Nov-April
+Sugarcane,55,95,50,Year-round
+Cotton,60,92,55,April-Sep
+Tur,70,89,65,July-Nov
+Rice,35,90,30,June-Oct
+Ragi,38,72,35,July-Oct
+Banana,80,96,75,April-July
+Oranges,90,91,85,Nov-Jan
+Grapes,100,97,95,Feb-Apr
+Onions,45,85,40,Jan-May
+Coconut,120,99,115,Year-round
+Areca nut,110,94,105,Year-round

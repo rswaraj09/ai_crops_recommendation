@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+        .result-box {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Crop Recommendation System</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Select District and Season</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="district">District</label>
+                        <select class="form-control" id="district">
+                            <option value="Ahmednagar">Ahmednagar</option>
+                            <option value="Akola">Akola</option>
+                            <option value="Amravati">Amravati</option>
+                            <option value="Aurangabad">Aurangabad</option>
+                            <option value="Beed">Beed</option>
+                            <option value="Bhandara">Bhandara</option>
+                            <option value="Buldhana">Buldhana</option>
+                            <option value="Chandrapur">Chandrapur</option>
+                            <option value="Dhule">Dhule</option>
+                            <option value="Gadchiroli">Gadchiroli</option>
+                            <option value="Gondia">Gondia</option>
+                            <option value="Hingoli">Hingoli</option>
+                            <option value="Jalgaon">Jalgaon</option>
+                            <option value="Jalna">Jalna</option>
+                            <option value="Kolhapur">Kolhapur</option>
+                            <option value="Latur">Latur</option>
+                            <option value="Mumbai City & Suburban">Mumbai City & Suburban</option>
+                            <option value="Nagpur">Nagpur</option>
+                            <option value="Nanded">Nanded</option>
+                            <option value="Nandurbar">Nandurbar</option>
+                            <option value="Nashik">Nashik</option>
+                            <option value="Osmanabad">Osmanabad</option>
+                            <option value="Palghar">Palghar</option>
+                            <option value="Parbhani">Parbhani</option>
+                            <option value="Pune">Pune</option>
+                            <option value="Raigad">Raigad</option>
+                            <option value="Ratnagiri">Ratnagiri</option>
+                            <option value="Sangli">Sangli</option>
+                            <option value="Satara">Satara</option>
+                            <option value="Sindhudurg">Sindhudurg</option>
+                            <option value="Solapur">Solapur</option>
+                            <option value="Thane">Thane</option>
+                            <option value="Wardha">Wardha</option>
+                            <option value="Washim">Washim</option>
+                            <option value="Yavatmal">Yavatmal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="season">Season</label>
+                        <select class="form-control" id="season">
+                            <option value="Kharif">Kharif</option>
+                            <option value="Rabi">Rabi</option>
+                            <option value="Perennial">Perennial</option>
+                        </select>
+                    </div>
+                    <button type="button" id="predictCropButton" class="btn btn-success">Predict Crop</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h3>Upload Soil Image</h3>
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="soilImage">Soil Image</label>
+                        <input type="file" class="form-control-file" id="soilImage" name="file">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload Image</button>
+                </form>
+                <div class="result-box" id="resultBox"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('predictCropButton').addEventListener('click', function() {
+            const district = document.getElementById('district').value;
+            const season = document.getElementById('season').value;
+
+            fetch(`/get_crop_data?district=${district}&season=${season}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        alert(`Recommended crops for ${district} in ${season} season: ${data.crops.join(', ')}`);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching crop data:', error);
+                    alert('Error fetching crop data');
+                });
+        });
+
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData();
+            const fileField = document.querySelector('input[type="file"]');
+
+            formData.append('file', fileField.files[0]);
+
+            fetch('/upload-soil-image', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultBox = document.getElementById('resultBox');
+                if (data.error) {
+                    resultBox.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
+                } else {
+                    resultBox.innerHTML = `
+                        <div class="alert alert-success">
+                            <h4>Soil Analysis Result</h4>
+                            <p>Nitrogen: ${data.soil_analysis.nitrogen}</p>
+                            <p>Phosphorus: ${data.soil_analysis.phosphorus}</p>
+                            <p>Potassium: ${data.soil_analysis.potassium}</p>
+                            <p>pH: ${data.soil_analysis.ph}</p>
+                        </div>
+                    `;
+                }
+            })
+            .catch(error => {
+                console.error('Error uploading image:', error);
+                alert('Error uploading image');
+            });
+        });
+    </script>
+</body>
+</html>
