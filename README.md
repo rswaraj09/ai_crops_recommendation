@@ -81,7 +81,8 @@ python train_model.py
 
 - *Crop Recommendation Data*: data/crop_recommendation.csv
 - *Soil Parameters Data*: data/random_merged_soil_dataset.csv
-- *Soil Images*: data/soil/ directory (extracted from soil.zip)
+- *Soil Images*
+  
 
 ## System Architecture
 
