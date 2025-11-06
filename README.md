@@ -22,7 +22,8 @@ A smart crop recommendation system that analyzes soil parameters and weather dat
 
    
    git clone <repository-url>
-   cd crop-recommendation-system
+   cd ai_crops_recommendation
+
    
 
 2. Run the application:
